@@ -1,1 +1,1 @@
-OmerVeriler
+ESP32'dan gelen veri: 4163
