@@ -11,16 +11,20 @@
 </head>
 <body>
     <h1>ESP32 Verileri</h1>
-    <div id="data">Bekleniyor...</div>
+    <div id="data">Veri bekleniyor...</div>
     <script>
-        // Webhook veya API ile veri almayı simüle edelim
+        // 'data.txt' dosyasındaki veriyi her saniyede bir alacak
         setInterval(() => {
-            fetch('data.txt')
-                .then(response => response.text())
+            fetch('data.txt')  // GitHub repository'sindeki 'data.txt' dosyasını alır
+                .then(response => response.text())  // Dosya içeriğini metin olarak okur
                 .then(data => {
+                    // HTML sayfasında 'data' bölümünü günceller
                     document.getElementById('data').innerText = data;
+                })
+                .catch(error => {
+                    console.error('Veri alınırken hata oluştu:', error);
                 });
-        }, 1000); // Her 1 saniyede bir günceller
+        }, 1000); // 1 saniyede bir veriyi güncelle
     </script>
 </body>
 </html>
