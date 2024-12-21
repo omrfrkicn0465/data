@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GitHub Data</title>
-    <script>
-        window.onload = function() {
-            fetch('https://api.github.com/repos/omrfrkicn0465/data/contents/data.txt')
-            .then(response => response.json())
-            .then(data => {
-                const content = atob(data.content); // Base64 çözümü
-                document.getElementById('data').innerText = content; // İçeriği sayfada göster
-            })
-            .catch(error => console.error('Hata:', error));
-        };
-    </script>
+    <title>ESP32 Data</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin-top: 50px; }
+        #data { font-size: 24px; color: green; }
+    </style>
 </head>
 <body>
-    <h1>GitHub'dan Veri</h1>
-    <pre id="data">Veri burada gösterilecek...</pre>
+    <h1>ESP32 Verileri</h1>
+    <div id="data">Bekleniyor...</div>
+    <script>
+        // Webhook veya API ile veri almayı simüle edelim
+        setInterval(() => {
+            fetch('data.txt')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('data').innerText = data;
+                });
+        }, 1000); // Her 1 saniyede bir günceller
+    </script>
 </body>
 </html>
